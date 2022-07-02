@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      name: python-app-pod
+      labels: 
+        app: python-app
+    spec:
+      containers:
+        - name: python-app-container
+          image: pinghuang/fork8spoc:latest
+          ports:
+            - containerPort: 8888
